@@ -30,7 +30,8 @@ class PlayerSpider(Spider):
         results['player_name'] = player_name
         fname = response.url.split('/')[-1]
 
-        t = datetime.utcnow().replace(microsecond=0)
+        t = datetime.utcnow().replace(microsecond=1)
+        results['created_on'] = t.isoformat()
         with open('{}_{}.json'.format(fname, t.isoformat()), 'w') as fp:
             json.dump(results, fp, indent=4, separators=(',', ': '))
 
